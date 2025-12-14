@@ -13,7 +13,7 @@ interface Person {
 const mentors: Person[] = [
   {
     name: "Sourav Sahoo",
-    role: " GSOC contributor and mentor 2018-19",
+    role: "GSOC contributor and mentor 2018-19",
     company: "Computer Scientist @ Adobe",
     image:
       "https://res.cloudinary.com/dnbf0uwku/image/upload/v1742227132/IMG_6677_jlwl9b.jpg",
@@ -21,7 +21,7 @@ const mentors: Person[] = [
   },
   {
     name: "Avinal",
-    role: "GSOC mentor @ Fossology || GSOD Contributor 2020@VLC ",
+    role: "GSOC mentor @ Fossology || GSOD Contributor 2020@VLC",
     company: "SDE II @ RED HAT",
     image:
       "https://res.cloudinary.com/dnbf0uwku/image/upload/v1742227115/WhatsApp_Image_2025-03-17_at_21.04.26_b63612c7_wb2qxh.jpg",
@@ -30,7 +30,7 @@ const mentors: Person[] = [
   {
     name: "Udit Gulati",
     role: "GSoC 2019",
-    company: "",
+    company: "Software Engineer",
     image:
       "https://res.cloudinary.com/dnbf0uwku/image/upload/v1742227112/WhatsApp_Image_2025-03-17_at_21.04.27_d3700681_y7zvf9.jpg",
     linkedin: "https://www.linkedin.com/in/uditgulati0/",
@@ -77,45 +77,77 @@ const mentors: Person[] = [
   },
 ];
 
-function PersonCard({ person }: { person: Person }) {
+function OrbitalPersonCard({ person }: { person: Person }) {
   return (
-    <div
-      className="group relative rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
-      style={{
-        background: "linear-gradient(to bottom right, rgba(255,255,255,0.05), rgba(255,255,255,0.02))"
-      }}
-    >
-      <div className="aspect-square overflow-hidden">
-        <img
-          src={person.image}
-          alt={person.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-        />
-        <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{
-            background: "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%)"
-          }}
-        >
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <h3 className="text-xl font-semibold text-white mb-1" style={{ fontFamily: "'Science Gothic', sans-serif" }}>
-              {person.name}
-            </h3>
-            <p className="text-gray-300 text-sm mb-4">{person.company}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+    <div className="relative group w-full h-full">
+      {/* The Orbital Card Container */}
+      <div className="relative h-full flex flex-col items-center rounded-[2rem] bg-black border border-blue-900/30 overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)] group-hover:-translate-y-2">
+        
+        {/* --- 1. Moving Scan Line Effect --- */}
+        <div className="absolute top-0 bottom-0 left-[-10px] w-[20px] bg-blue-500/10 blur-xl -skew-x-12 group-hover:left-[120%] transition-all duration-[1.5s] ease-in-out pointer-events-none z-0"></div>
 
-function Section({ people }: { people: Person[] }) {
-  return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {people.map((person, index) => (
-          <PersonCard key={index} person={person} />
-        ))}
+        {/* --- 2. Top UI Dots --- */}
+        <div className="absolute top-6 left-6 flex items-center gap-2 opacity-50 z-10">
+          <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+          <div className="w-1 h-1 rounded-full bg-blue-500/50"></div>
+          <div className="h-[1px] w-8 bg-blue-500/30"></div>
+        </div>
+
+        {/* --- 3. Image Section (Floating Orb) --- */}
+        <div className="mt-10 mb-4 relative z-10">
+           {/* Outer Rotating Ring (On Hover) */}
+           <div className="absolute inset-[-4px] border border-dashed border-blue-500/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-[spin_10s_linear_infinite]"></div>
+           
+           {/* Image Container */}
+           <div className="w-28 h-28 rounded-full p-1 bg-gradient-to-b from-blue-900/20 to-black border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.2)] overflow-hidden">
+              <img
+                src={person.image}
+                alt={person.name}
+                className="w-full h-full object-cover rounded-full filter grayscale group-hover:grayscale-0 transition-all duration-500"
+              />
+           </div>
+        </div>
+
+        {/* --- 4. Content Section --- */}
+        <div className="px-6 pb-8 text-center relative z-10 flex-1 flex flex-col items-center w-full">
+          <h3 className="text-xl font-bold text-white mb-1 tracking-tight group-hover:text-blue-400 transition-colors">
+            {person.name}
+          </h3>
+          
+          <div className="text-xs font-mono text-blue-500 mb-2 uppercase tracking-wider">
+             {person.company}
+          </div>
+          
+          {person.role && (
+             <p className="text-xs text-slate-400 mb-4 line-clamp-2 max-w-[90%]">
+               {person.role}
+             </p>
+          )}
+
+          {/* Spacer to push button down if needed */}
+          <div className="flex-1"></div>
+
+          {/* LinkedIn Button (Orbital Pill) */}
+          {person.linkedin && (
+             <a 
+               href={person.linkedin}
+               target="_blank"
+               rel="noopener noreferrer"
+               className="mt-2 px-6 py-1.5 rounded-full border border-blue-800 bg-blue-950/20 text-blue-400 text-xs font-mono hover:bg-blue-500 hover:text-white hover:border-blue-500 transition-all duration-300 flex items-center gap-2"
+             >
+               <span>CONNECT</span>
+               <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+             </a>
+          )}
+        </div>
+
+        {/* --- 5. Bottom Curve Decoration --- */}
+        <div className="absolute bottom-0 right-0 w-20 h-20 opacity-20 pointer-events-none group-hover:opacity-40 transition-opacity duration-500">
+          <svg viewBox="0 0 100 100" className="w-full h-full stroke-blue-500 fill-none" strokeWidth="1.5">
+             <path d="M 0 100 Q 50 100 100 50" />
+          </svg>
+        </div>
+
       </div>
     </div>
   );
@@ -123,33 +155,89 @@ function Section({ people }: { people: Person[] }) {
 
 export default function Judges() {
   return (
-    <div className="min-h-screen text-white py-20" id="judges" style={{ backgroundColor: "#212529" }}>
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/3 left-1/3 w-72 h-72 rounded-full opacity-20 filter blur-[100px]" style={{ backgroundColor: "#00B4D8" }}></div>
-        <div className="absolute bottom-1/4 right-1/3 w-64 h-64 rounded-full opacity-20 filter blur-[120px]" style={{ backgroundColor: "#00B4D8" }}></div>
+    <div className="min-h-screen text-white py-20 bg-black relative overflow-hidden" id="judges">
+      
+      {/* --- Ambient Background Glow --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px]"></div>
       </div>
 
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <svg className="w-8 h-8" style={{ color: "#00B4D8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-            </svg>
-            <svg className="w-8 h-8" style={{ color: "#00B4D8" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-            </svg>
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white" style={{ fontFamily: "'Science Gothic', sans-serif" }}>
-            Mentor <span style={{ color: "#00B4D8" }}>And</span> Judges
-          </h2>
-          <div className="w-20 h-1 mx-auto mb-6" style={{ backgroundColor: "#00B4D8" }}></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Meet our distinguished panel of mentors and judges who will guide
-            and evaluate your innovations during HACK 5.0
-          </p>
+      <div className="container mx-auto px-6 relative z-10">
+        
+        {/* --- Header Section --- */}
+        <div className="text-center mb-20">
+         <div className="relative text-center mb-24 group">
+  
+  {/* --- 1. TOP DECORATION: File Path --- */}
+  <div className="flex items-center justify-center gap-3 mb-2 opacity-70">
+     <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-blue-600"></div>
+     <span className="text-blue-500 text-[10px] md:text-xs font-mono tracking-[0.2em] uppercase">
+       /sys/access/personnel_log
+     </span>
+     <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-blue-600"></div>
+  </div>
+
+  {/* --- 2. MAIN TITLE COMPLEX --- */}
+  <div className="relative inline-block">
+    
+    {/* Animated Brackets [ ] */}
+    <span className="absolute -left-6 md:-left-12 top-0 text-4xl md:text-6xl font-thin text-blue-700 animate-pulse">[</span>
+    <span className="absolute -right-6 md:-right-12 top-0 text-4xl md:text-6xl font-thin text-blue-700 animate-pulse">]</span>
+
+    {/* The Title */}
+    <h2 className="relative text-4xl md:text-6xl font-black text-white tracking-tighter uppercase z-10">
+      MENTORS_<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+        &_JUDGES
+      </span>
+      
+      {/* Glitch Shadow (Visual Noise) */}
+      <span className="absolute top-0 left-0 -ml-[2px] text-blue-500/30 -z-10 mix-blend-screen animate-pulse select-none">
+        MENTORS_&_JUDGES
+      </span>
+    </h2>
+  </div>
+
+  {/* --- 3. CYBER DIVIDER (Loading Bar) --- */}
+  <div className="mt-8 flex flex-col items-center gap-1">
+     
+     {/* The Bar Container */}
+     <div className="w-48 md:w-64 h-3 bg-[#020617] border border-blue-800 skew-x-[-20deg] relative overflow-hidden p-[2px]">
+        {/* The Fill (Loading Effect) */}
+        <div className="h-full w-full bg-blue-600/20 relative">
+            {/* Moving block inside */}
+            <div className="absolute top-0 left-0 h-full w-1/2 bg-blue-500 animate-[shimmer_2s_infinite]"></div>
+        </div>
+        
+        {/* Grid Pattern Overlay */}
+        <div className="absolute inset-0 flex gap-[2px]">
+           {[...Array(20)].map((_, i) => (
+             <div key={i} className="w-[2px] h-full bg-black/50"></div>
+           ))}
+        </div>
+     </div>
+     
+     {/* Bottom Status Text */}
+     <div className="flex justify-between w-48 md:w-64 text-[9px] text-blue-600 font-mono tracking-widest mt-1 opacity-80">
+        <span className="animate-pulse">AUTH_VERIFIED</span>
+        <span>LEVEL_05</span>
+     </div>
+
+  </div>
+  
+  {/* Optional: Description Text below the cyber divider */}
+  <p className="mt-6 text-blue-200/60 max-w-2xl mx-auto font-light leading-relaxed text-sm md:text-base">
+     Distinguished panel of experts authorized to evaluate system protocols.
+  </p>
+</div>  
         </div>
 
-        <Section people={mentors} />
+        {/* --- Grid Section --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {mentors.map((person, index) => (
+            <OrbitalPersonCard key={index} person={person} />
+          ))}
+        </div>
       </div>
     </div>
   );
