@@ -13,6 +13,7 @@ import Accommodation from './components/Accommodation'
 import Committee from './components/Committee'
 import Contact from './components/Contact'
 import Prizes from './components/Prizes'
+import Team from './components/Team'
 
 export default function Home() {
 
@@ -41,7 +42,7 @@ export default function Home() {
       
       {currentPage === 'home' && (
         <>
-          <HeroSlider />
+          {/* <HeroSlider /> */}
           
           {/* Main Content Area with Sidebar */}
           <div className="container mx-auto px-4 py-8 lg:py-12">

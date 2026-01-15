@@ -1,4 +1,14 @@
 import { useState } from 'react';
+// Smooth scroll handler
+const handleSmoothScroll = (e, href) => {
+  if (href.startsWith('#')) {
+    e.preventDefault();
+    const el = document.querySelector(href);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+};
 const nithLogo = '/assets/nith-logo.png';
 
 const Header = () => {
@@ -12,6 +22,7 @@ const Header = () => {
     { name: 'Accommodation', href: '#accommodation' },
     { name: 'Committee', href: '#committee' },
     { name: 'Contact', href: '#contact' },
+    { name:"Team", href:"#team" }
   ];
 
   return (
@@ -49,7 +60,10 @@ const Header = () => {
                     <a
                       href={item.href}
                       className="block py-3 text-[#F2D5C4] hover:text-[#E8A87C] transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={e => {
+                        setMobileMenuOpen(false);
+                        handleSmoothScroll(e, item.href);
+                      }}
                     >
                       {item.name}
                     </a>
@@ -84,6 +98,7 @@ const Header = () => {
                     <a
                       href={item.href}
                       className="text-[#F2D5C4] hover:text-[#E8A87C] font-medium transition-colors relative group"
+                      onClick={e => handleSmoothScroll(e, item.href)}
                     >
                       {item.name}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E8A87C] group-hover:w-full transition-all duration-300"></span>
