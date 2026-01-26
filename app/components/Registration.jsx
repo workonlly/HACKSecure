@@ -18,14 +18,37 @@ const Registration = () => {
         {/* Main Content - Takes 2/3 width on desktop */}
         <main className="lg:w-2/3 pt-18 md:pt-10">
           {/* Registration Buttons Card */}
-
-          {/* Devfolio Registration */}
-          <div
-            className="apply-button"
-            data-hackathon-slug="hacksecure-1461"
-            data-button-theme="light"
-            style={{ height: "44px", width: "312px" }}
-          ></div>
+          <div className="mb-8 md:mb-10">
+            <div className="bg-gradient-to-br from-[#3E1714] via-[#5A2A25] to-[#3E1714] p-8 md:p-10 rounded-2xl shadow-2xl border-2 border-[#E8A87C] relative overflow-hidden">
+              {/* Decorative corner accents */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#E8A87C] opacity-10 rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#E8A87C] opacity-10 rounded-tr-full"></div>
+              
+              <div className="relative z-10">
+                <h2 className="text-2xl md:text-3xl font-bold text-[#F2D5C4] mb-2 text-center">
+                  Ready to Join?
+                </h2>
+                <p className="text-[#E8A87C] text-sm md:text-base mb-6 text-center">
+                  Register now and be part of HackSecure 2026
+                </p>
+                
+                <div className="flex justify-center">
+                  <div
+                    className="apply-button inline-block rounded-xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border-3 border-[#E8A87C] bg-white"
+                    data-hackathon-slug="hacksecure-1461"
+                    data-button-theme="light"
+                    style={{ height: "60px", width: "340px" }}
+                  >
+                    <img src="/devfolio.svg" alt="Devfolio Logo" className="h-full w-full object-contain p-2" />
+                  </div>
+                </div>
+                
+                <p className="text-[#F5D7C8] text-xs md:text-sm mt-4 text-center opacity-80">
+                  🚀 Quick registration • 🎯 Instant confirmation • 🏆 Amazing prizes await
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Registration Guidelines */}
           <div className="space-y-4 md:space-y-6 text-[#33110E]">

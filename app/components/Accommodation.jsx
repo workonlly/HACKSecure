@@ -1,81 +1,188 @@
 const Accommodation = () => {
-  const accommodations = [
-    { name: 'NIT Hamirpur Guest House', url: null },
-    { name: 'NIT Hamirpur Hostels', url: null },
-    { name: 'Hotel Parijat', url: 'https://www.hotelparijat.com/' },
-    { name: 'Hotel Gulmarg Regency', url: 'https://www.makemytrip.com/hotels/hotel_gulmarg_regency-details-hamirpur.html' },
-    { name: 'Hotel Surya', url: null },
-    { name: 'Hill View Hotel Hamirpur', url: null },
-    { name: 'Hotel Crown', url: null },
-    { name: 'Hotel Ashoka', url: null },
+  const facilities = [
+    'Comfortable dormitory rooms with bedding',
+    'Common dining facilities with 3 meals per day',
+    ' 24/7 security and surveillance',
+    'Reliable WiFi connectivity',
+    'Basic amenities (towels, toiletries)',
+    'Laundry services',
+    'Recreation area and common rooms',
+    'Medical assistance on-campus'
+  ];
+
+  const accommodationProcess = [
+    {
+      step: 1,
+      title: 'Register for Hackathon',
+      description: 'Complete your hackathon registration through the online form'
+    },
+    {
+      step: 2,
+      title: 'Request Accommodation',
+      description: 'During registration, select that you need on-campus accommodation'
+    },
+    {
+      step: 3,
+      title: 'Confirmation',
+      description: 'Receive confirmation email with check-in details and hostel information'
+    },
+    {
+      step: 4,
+      title: 'Check-in',
+      description: 'Arrive at Satpura Hostel on March 14, 2026 for registration and check-in'
+    }
   ];
 
   return (
     <div className="container mx-auto px-4 py-8 lg:py-12">
-      <div className="flex flex-col lg:flex-row gap-8">
-        {/* Main Content - Takes 2/3 width on desktop */}
-        <main className="lg:w-2/3">
-          <div className="space-y-6 text-[#33110E]">
-            <p className="font-bold text-lg text-[#5A2A25]">Accommodation Options in Hamirpur</p>
+      {/* Page Title */}
+      <div className="mb-12">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#5A2A25] mb-4">Accommodation</h1>
+        <p className="text-base sm:text-lg text-[#33110E] max-w-3xl">
+          All participants attending the grand finale will be accommodated at <strong>Satpura Hostel</strong>, NIT Hamirpur.
+        </p>
+      </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <tbody>
-                  {accommodations.map((accommodation, index) => (
-                    <tr
-                      key={index}
-                      className={`${
-                        index % 2 === 0 ? 'bg-[#F5D7C8]/20' : 'bg-white'
-                      } border-b border-[#E3AFA0]/30`}
-                    >
-                      <td className="px-4 py-3">
-                        {accommodation.url ? (
-                          <a
-                            href={accommodation.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[#5A2A25] hover:text-[#E8A87C] underline transition-colors"
-                          >
-                            {accommodation.name}
-                          </a>
-                        ) : (
-                          <span className="underline">{accommodation.name}</span>
-                        )}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* Main Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="lg:col-span-2 space-y-8">
+          
+          {/* Hostel Information Card */}
+          <div className="bg-white border-2 border-[#E8A87C] rounded-lg p-6 sm:p-8 shadow-md">
+            <h2 className="text-2xl font-bold text-[#5A2A25] mb-4">Satpura Hostel</h2>
+            
+            <div className="space-y-4 text-[#33110E]">
+              <div>
+                <p className="font-semibold text-[#5A2A25] mb-2">Location:</p>
+                <p className="text-sm sm:text-base">NIT Hamirpur Campus, Hamirpur, Himachal Pradesh 177005</p>
+              </div>
 
-            <div className="mt-8 p-4 bg-[#F5D7C8]/30 border-l-4 border-[#E8A87C] rounded">
-              <p className="text-sm text-[#33110E]">
-                <strong>Note:</strong> Participants are advised to book accommodation in advance.
-                For assistance with on-campus accommodation (Guest House/Hostels), please contact
-                the organizing committee.
-              </p>
+              <div>
+                <p className="font-semibold text-[#5A2A25] mb-2">Check-in Date:</p>
+                <p className="text-sm sm:text-base">March 14, 2026</p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-[#5A2A25] mb-2">Check-out Date:</p>
+                <p className="text-sm sm:text-base">March 16, 2026</p>
+              </div>
+
+              <div>
+                <p className="font-semibold text-[#5A2A25] mb-2">Duration:</p>
+                <p className="text-sm sm:text-base">2 nights (accommodating the Grand Finale event)</p>
+              </div>
             </div>
           </div>
-        </main>
 
-        {/* Sidebar - Takes 1/3 width on desktop */}
-        <aside className="lg:w-1/3">
+          {/* Facilities Section */}
+          <div className="bg-[#F5D7C8]/20 border-2 border-[#E8A87C]/30 rounded-lg p-6 sm:p-8">
+            <h2 className="text-2xl font-bold text-[#5A2A25] mb-6">Hostel Facilities</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {facilities.map((facility, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="text-[#E8A87C] text-xl flex-shrink-0">✓</div>
+                  <p className="text-sm sm:text-base text-[#33110E]">{facility}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* How to Get Accommodation */}
+          <div className="bg-white border-2 border-[#E8A87C]/30 rounded-lg p-6 sm:p-8">
+            <h2 className="text-2xl font-bold text-[#5A2A25] mb-6">How to Get Accommodation</h2>
+            
+            <div className="space-y-4">
+              {accommodationProcess.map((item, index) => (
+                <div key={index} className="flex gap-4 pb-4 border-b border-[#E3AFA0]/30 last:border-0">
+                  <div className="flex-shrink-0">
+                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-[#5A2A25] text-white font-bold">
+                      {item.step}
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-[#5A2A25] mb-1">{item.title}</h3>
+                    <p className="text-sm sm:text-base text-[#33110E]">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Important Notes */}
+          <div className="bg-[#FFF8F0] border-2 border-[#E8A87C] rounded-lg p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-[#5A2A25] mb-4">Important Information</h2>
+            
+            <ul className="space-y-3 text-sm sm:text-base text-[#33110E]">
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>Free Accommodation:</strong> Accommodation at Satpura Hostel is provided free of cost for all finalists.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>Mandatory Attendance:</strong> Participants must stay at the hostel during the event period.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>ID Verification:</strong> Valid government ID will be required at check-in.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>Guest Policy:</strong> Only registered participants are allowed in the hostel.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>Valuables:</strong> NIT Hamirpur is not responsible for loss of personal valuables. Please use lockers provided.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-[#E8A87C] font-bold">•</span>
+                <span><strong>Conduct:</strong> All participants must follow hostel rules and maintain discipline during their stay.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <aside className="lg:col-span-1">
           <div className="lg:sticky lg:top-24">
-            <div className="bg-[#3E1714] text-white p-8 rounded-lg shadow-lg border border-[#5A2A25]">
-              <h3 className="text-[#E8A87C] text-base font-semibold mb-2">
-                HACKATHON ON MOBILE DEVICE and Application Security
-              </h3>
-              <p className="text-[#E8A87C] text-base font-semibold mb-4">March 2026</p>
-              <p className="text-sm text-[#F2D5C4]">
-                Contact:
-                <br />
-                <a
-                  href="mailto:hackathon@nith.ac.in"
-                  className="hover:text-[#E8A87C] transition-colors"
-                >
-                  hackathon@nith.ac.in
-                </a>
-              </p>
+            <div className="bg-[#3E1714] text-white p-6 sm:p-8 rounded-lg shadow-lg border-2 border-[#E8A87C]">
+              <h3 className="text-[#E8A87C] text-lg font-bold mb-4">Quick Info</h3>
+              
+              <div className="space-y-6">
+                <div>
+                  <p className="text-[#F2D5C4] font-semibold text-sm mb-2">Hostel Name</p>
+                  <p className="text-[#E3AFA0] text-sm">Satpura Hostel</p>
+                </div>
+
+                <div>
+                  <p className="text-[#F2D5C4] font-semibold text-sm mb-2">Event Dates</p>
+                  <p className="text-[#E3AFA0] text-sm">March 14-15, 2026</p>
+                </div>
+
+                <div>
+                  <p className="text-[#F2D5C4] font-semibold text-sm mb-2">Check-in</p>
+                  <p className="text-[#E3AFA0] text-sm">March 14, 2026</p>
+                </div>
+
+                <div>
+                  <p className="text-[#F2D5C4] font-semibold text-sm mb-2">Check-out</p>
+                  <p className="text-[#E3AFA0] text-sm">March 16, 2026</p>
+                </div>
+
+                <div className="border-t border-[#E8A87C]/30 pt-6">
+                  <p className="text-[#F2D5C4] font-semibold text-sm mb-2">Questions?</p>
+                  <a
+                    href="mailto:hackathon@nith.ac.in"
+                    className="text-[#E8A87C] hover:text-white transition-colors text-sm underline"
+                  >
+                    Contact us
+                  </a>
+                </div>
+
+                <div className="bg-[#5A2A25] rounded p-4 text-center">
+                  <p className="text-[#E8A87C] font-bold text-sm">✓ Free for all Finalists</p>
+                </div>
+              </div>
             </div>
           </div>
         </aside>
