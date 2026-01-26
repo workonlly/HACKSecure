@@ -32,16 +32,11 @@ const Registration = () => {
                   Register now and be part of HackSecure 2026
                 </p>
                 
+                <a href="">
                 <div className="flex justify-center">
-                  <div
-                    className="apply-button inline-block rounded-xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border-3 border-[#E8A87C] bg-white"
-                    data-hackathon-slug="hacksecure-1461"
-                    data-button-theme="light"
-                    style={{ height: "60px", width: "340px" }}
-                  >
-                    <img src="/devfolio.svg" alt="Devfolio Logo" className="h-full w-full object-contain p-2" />
-                  </div>
+                    <img src="/devfolio.svg" alt="Devfolio Logo"  width={200} className=" rounded-sm hover:scale-105 object-contain p-2 cursor-pointer border-3 border-[#E8A87C] bg-white" />
                 </div>
+                </a>
                 
                 <p className="text-[#F5D7C8] text-xs md:text-sm mt-4 text-center opacity-80">
                   🚀 Quick registration • 🎯 Instant confirmation • 🏆 Amazing prizes await
