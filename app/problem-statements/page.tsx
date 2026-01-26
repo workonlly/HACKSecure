@@ -1,9 +1,9 @@
-import Team from "../components/team";
+import ProblemStatements from "../components/ProblemStatements";
 
 export default function page() {
     return (
         <div className="min-h-screen bg-white">
-            <Team />
+            <ProblemStatements />
         </div>
     )
 }

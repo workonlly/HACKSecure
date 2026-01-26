@@ -1,24 +1,10 @@
-import TopBar from '../components/TopBar';
-import Header from '../components/Header';
-import ProblemStatements from '../components/ProblemStatements';
-import Footer from '../components/Footer';
-import Contact from '../components/Contact';
+import React from 'react'
+import Contact from '../components/Contact'
 
-const ProblemStatementsPage = () => {
+export default function page() {
   return (
-    <div className="min-h-screen bg-white">
-      <TopBar />
-      <Header />
-      
-      <div className="pt-8 lg:pt-12">
-        <div className="pt-8 lg:pt-12">
-          <Contact />
-        </div>
-      </div>
-      
-      <Footer />
+    <div className='min-h-screen bg-white'>
+      <Contact />
     </div>
-  );
-};
-
-export default ProblemStatementsPage;
+  )
+}

@@ -1,30 +1,20 @@
 "use client";
-
-import { useState } from 'react';
-// Smooth scroll handler
-const handleSmoothScroll = (e, href) => {
-  if (href.startsWith('#')) {
-    e.preventDefault();
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-};
-const nithLogo = '/assets/nith-logo.png';
+import Link from "next/link";
+import { useState } from "react";
+const nithLogo = "/assets/nith-logo.png";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Problem Statements', href: '/problem' },
-    // { name: 'Prizes', href: '#prizes' },
-    { name: 'Registration', href: '/registration' },
-    { name: 'Accommodation', href: '/accomodation' },
-    { name: 'Committee', href: '/commitee' },
-    { name: 'Contact', href: '/contact' },
-    { name:"Team", href:"/team" }
+    { name: "Home", href: "/" },
+    { name: "Problem Statements", href: "/problem-statements" },
+    // { name: 'Prizes', href: '/prizes' },
+    { name: "Registration", href: "/registration" },
+    { name: "Accommodation", href: "/accommodation" },
+    { name: "Committee", href: "/committee" },
+    { name: "Contact", href: "/contact" },
+    { name: "Team", href: "/team" },
   ];
 
   return (
@@ -33,21 +23,27 @@ const Header = () => {
       <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#33110E] shadow-md">
         <div className="container mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#home">
-              <img 
-                src={nithLogo} 
-                alt="NIT Hamirpur" 
-                className="h-10 w-auto"
-              />
-            </a>
+            <Link href="/">
+              <img src={nithLogo} alt="NIT Hamirpur" className="h-10 w-auto" />
+            </Link>
           </div>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-[#F2D5C4]"
             aria-label="Toggle menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </button>
         </div>
@@ -58,17 +54,19 @@ const Header = () => {
             <nav className="container mx-auto px-4 py-2">
               <ul>
                 {navItems.map((item) => (
-                  <li key={item.name} className="border-b border-[#5A2A25] last:border-0">
-                    <a
+                  <li
+                    key={item.name}
+                    className="border-b border-[#5A2A25] last:border-0"
+                  >
+                    <Link
                       href={item.href}
                       className="block py-3 text-[#F2D5C4] hover:text-[#E8A87C] transition-colors"
-                      onClick={e => {
+                      onClick={() => {
                         setMobileMenuOpen(false);
-                        handleSmoothScroll(e, item.href);
                       }}
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -83,13 +81,13 @@ const Header = () => {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <div className="shrink-0">
-              <a href="#home">
-                <img 
-                  src={nithLogo} 
-                  alt="NIT Hamirpur" 
+              <Link href="/">
+                <img
+                  src={nithLogo}
+                  alt="NIT Hamirpur"
                   className="h-14 w-auto"
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Navigation */}
@@ -97,14 +95,13 @@ const Header = () => {
               <ul className="flex items-center space-x-8">
                 {navItems.map((item) => (
                   <li key={item.name}>
-                    <a
+                    <Link
                       href={item.href}
                       className="text-[#F2D5C4] hover:text-[#E8A87C] font-medium transition-colors relative group"
-                      onClick={e => handleSmoothScroll(e, item.href)}
                     >
                       {item.name}
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#E8A87C] group-hover:w-full transition-all duration-300"></span>
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
