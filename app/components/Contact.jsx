@@ -86,7 +86,7 @@ const Contact = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
 
   return (
-    <div className="container mx-auto px-4 py-8 lg:py-12">
+    <div className="container mx-auto px-4 py-20 lg:py-12">
       {/* Page Title */}
       <div className="mb-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#5A2A25] mb-4">

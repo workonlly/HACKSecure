@@ -13,7 +13,7 @@ const Registration = () => {
     };
   }, []);
   return (
-    <div className="container mx-auto px-4 py-6 md:py-8 lg:py-12">
+    <div className="container mx-auto px-4 py-10 md:py-8 lg:py-12">
       <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
         {/* Main Content - Takes 2/3 width on desktop */}
         <main className="lg:w-2/3 pt-18 md:pt-10">
