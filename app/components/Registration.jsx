@@ -3,13 +3,28 @@ import { useEffect } from "react";
 
 const Registration = () => {
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://apply.devfolio.co/v2/sdk.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
+    let scriptAdded = false;
+    const existingScript = document.querySelector(
+      'script[src="https://apply.devfolio.co/v2/sdk.js"]'
+    );
+
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://apply.devfolio.co/v2/sdk.js";
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
+      scriptAdded = true;
+    }
     return () => {
-      document.body.removeChild(script);
+      if (scriptAdded) {
+        const injectedScript = document.querySelector(
+          'script[src="https://apply.devfolio.co/v2/sdk.js"]'
+        );
+        if (injectedScript) {
+          document.body.removeChild(injectedScript);
+        }
+      }
     };
   }, []);
   return (
@@ -32,11 +47,26 @@ const Registration = () => {
                   Register now and be part of HackSecure 2026
                 </p>
                 
-                <a href="">
                 <div className="flex justify-center">
-                    <img src="/devfolio.svg" alt="Devfolio Logo"  width={200} className=" rounded-sm hover:scale-105 object-contain p-2 cursor-pointer border-3 border-[#E8A87C] bg-white" />
+                  <a
+                    href="https://devfolio.co/apply?slug=hacksecure-1461"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-8 py-3 bg-white text-[#3E1714] font-bold rounded-lg border-2 border-[#E8A87C] hover:bg-[#E8A87C] hover:text-white transition-all duration-300 shadow-lg"
+                  >
+                    Apply with Devfolio
+                  </a>
                 </div>
-                </a>
+                
+                {/* Devfolio SDK Button (appears when hackathon is verified) */}
+                <div className="flex justify-center mt-2">
+                  <div
+                    className="apply-button"
+                    data-hackathon-slug="hacksecure-1461"
+                    data-button-theme="light"
+                    style={{ height: "44px", width: "312px", display: "none" }}
+                  ></div>
+                </div>
                 
                 <p className="text-[#F5D7C8] text-xs md:text-sm mt-4 text-center opacity-80">
                   🚀 Quick registration • 🎯 Instant confirmation • 🏆 Amazing prizes await
