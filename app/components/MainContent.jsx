@@ -224,9 +224,9 @@ const MainContent = () => {
 
           <div className="flex justify-center">
             <img
-              src="/assets/devfolio_logo.png"
-              alt="Devfolio"
-              className="h-24 md:h-32 lg:h-40 object-contain"
+              src="/assets/devfolio.png"
+              alt="DEVFOLIO LOGO"
+              className="h-10 md:h-16 lg:h-20 object-contain"
             />
           </div>
         </div>

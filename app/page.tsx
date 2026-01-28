@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white ">
-      <img src="/hack-portrait.svg" alt="" />
+      <img src="/hack-portrait.svg" alt="" className='pt-16 lg:pt-0' />
       {/* Main Content Area with Sidebar */}
       <div className="container mx-auto px-4 py-8 lg:py-12">
         
