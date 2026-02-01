@@ -1,6 +1,51 @@
 "use client";
 import { useEffect } from "react";
 
+const objectives = [
+  "Enhance Awareness: Educate participants on mobile device security threats and best practices.",
+  "Encourage Innovation: Foster innovative solutions to counter mobile security vulnerabilities.",
+  "Skill Development: Provide a platform for participants to enhance their technical skills in mobile security and ethical hacking",
+  "Industry Collaboration: Facilitate knowledge exchange between academia, industry experts, and cybersecurity professionals",
+  "Prototype Development: Encourage the creation of proof-of-concept solutions that can be further developed into robust security applications.",
+];
+
+const phases = [
+  {
+    title: "Phase 1: Registration",
+    description:
+      "Call for participation through the portal. Teams register and submit their ideas.",
+  },
+  {
+    title: "Phase 2: Evaluation",
+    description:
+      "Single evaluation round to assess innovation, feasibility, and clarity of submitted ideas. Shortlisted teams announced on 5th March. (Online)",
+  },
+  {
+    title: "Phase 3: Hackathon & Prototype Development",
+    description:
+      "Shortlisted teams participate in the hackathon from 10th to 11th March and develop their working prototypes with available mentorship support. Problem statements listed on the website will be used only for shortlisting. Actual problem statements will be revealed during the Hackathon Opening Ceremony.",
+  },
+  {
+    title: "Phase 4: Final Presentation & Awards",
+    description:
+      "Teams present their final working solutions before the judging panel at NIT Hamirpur. Winners are selected and awarded on 11th March.",
+  },
+];
+
+const timeline = [
+  { event: "Grand Challenge Launch", date: "31st January 2026" },
+  { event: "Registration Window Opens", date: "31st January 2026" },
+  {
+    event: "Last Date for Registration & Idea Submission",
+    date: "22nd February 2026",
+  },
+  { event: "Evaluation Round", date: "22nd February 2026" },
+  { event: "Announcement of Shortlisted Teams", date: "5th March 2026" },
+  { event: "Hackathon Starts", date: "10th March 2026" },
+  { event: "Project Submission Deadline", date: "11th March 2026" },
+  { event: "Awards Ceremony / Event Close", date: "11th March 2026" },
+];
+
 export default function Home() {
   useEffect(() => {
     const script = document.createElement("script");
@@ -13,64 +58,20 @@ export default function Home() {
     };
   }, []);
 
-  const objectives = [
-    "Enhance Awareness: Educate participants on mobile device security threats and best practices.",
-    "Encourage Innovation: Foster innovative solutions to counter mobile security vulnerabilities.",
-    "Skill Development: Provide a platform for participants to enhance their technical skills in mobile security and ethical hacking",
-    "Industry Collaboration: Facilitate knowledge exchange between academia, industry experts, and cybersecurity professionals",
-    "Prototype Development: Encourage the creation of proof-of-concept solutions that can be further developed into robust security applications.",
-  ];
-
-  const phases = [
-    {
-      title: "Phase 1: Registration",
-      description:
-        "Call for participation through the portal. Teams register and submit their ideas.",
-    },
-    {
-      title: "Phase 2: Evaluation",
-      description:
-        "Single evaluation round to assess innovation, feasibility, and clarity of submitted ideas. Shortlisted teams announced on 5th March. (Online)",
-    },
-    {
-      title: "Phase 3: Hackathon & Prototype Development",
-      description:
-        "Shortlisted teams participate in the hackathon from 10th to 11th March and develop their working prototypes with available mentorship support.",
-    },
-    {
-      title: "Phase 4: Final Presentation & Awards",
-      description:
-        "Teams present their final working solutions before the judging panel at NIT Hamirpur. Winners are selected and awarded on 11th March.",
-    },
-  ];
-
-  const timeline = [
-    { event: "Grand Challenge Launch", date: "31st January 2026" },
-    { event: "Registration Window Opens", date: "31st January 2026" },
-    {
-      event: "Last Date for Registration & Idea Submission",
-      date: "22nd February 2026",
-    },
-    { event: "Evaluation Round", date: "22nd February 2026" },
-    { event: "Announcement of Shortlisted Teams", date: "5th March 2026" },
-    { event: "Hackathon Starts", date: "10th March 2026" },
-    { event: "Project Submission Deadline", date: "11th March 2026" },
-    { event: "Awards Ceremony / Event Close", date: "11th March 2026" },
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       <div>
-      <img
-        src="/assets/hacksecure-banner.png"
-        alt=""
-        className="pt-16 lg:pt-0 lg:h-screen w-screen "
-      /></div>
+        <img
+          src="/assets/hacksecure-banner.png"
+          alt=""
+          className="pt-16 lg:pt-0 lg:h-screen w-screen "
+        />
+      </div>
 
       {/* Main Content Area */}
       <div className="container mx-auto px-4 py-8 lg:py-12">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Main Content - Full width */}
+          {/* Main Content */}
           <main className="w-full max-w-6xl mx-auto">
             <div className="space-y-12">
               {/* About Hackathon Section */}
@@ -210,8 +211,8 @@ export default function Home() {
                         <ul className="list-disc list-inside space-y-2 text-sm md:text-base text-[#33110E]">
                           <li>
                             Click on the{" "}
-                            <strong>&quot;Register with Devfolio&quot;</strong> button to
-                            begin your registration.
+                            <strong>&quot;Register with Devfolio&quot;</strong>{" "}
+                            button to begin your registration.
                           </li>
                           <li>
                             Fill out the <strong>registration form</strong> on
