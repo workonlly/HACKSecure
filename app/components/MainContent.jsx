@@ -60,12 +60,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div>
+      <div className="w-full ">
+      <picture className="w-full block">
+        <source media="(min-width: 1024px)" srcSet="/hack-landscape.svg" />
+        <source media="(min-width: 768px)" srcSet="/hack-landscape.svg" />
         <img
-          src="/assets/hacksecure-banner.png"
+          src="/hack-portrait.svg"
           alt=""
-          className="pt-16 lg:pt-0 lg:h-screen w-screen "
+          className="w-full h-auto block"
         />
+      </picture>
       </div>
 
       {/* Main Content Area */}
