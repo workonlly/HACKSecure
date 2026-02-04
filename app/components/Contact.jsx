@@ -1,15 +1,22 @@
 "use client";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 
 const Contact = () => {
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,15 +26,29 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    // Handle form submission here (API call)
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
-    setTimeout(() => {
-      setFormData({ name: "", email: "", subject: "", message: "" });
-      setSubmitted(false);
-    }, 3000);
+    setLoading(true);
+
+    try {
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY);
+
+      toast.success("Message sent successfully!");
+      setSubmitted(true);
+
+      // Clear inputs
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.log("FAILED...", error.text);
+      toast.error("Failed to send message. Please try again!");
+    }
+
+    setLoading(false);
   };
 
   const contactInfo = [
@@ -55,37 +76,36 @@ const Contact = () => {
     {
       question: "How do I register?",
       answer:
-        'Just click that big, shiny "Register Now" button on our website, fill in your details, and boom—you\'re in! Don\'t wait too long though; spots fill up fast!',
+        "Just click that big, shiny \"Register Now\" button on our website, fill in your details, and boom—you're in! Don't wait too long though; spots fill up fast!",
     },
     {
       question: "Who can participate?",
       answer:
-        "Whether you're a coding ninja, a design wizard, or just someone with crazy ideas—everyone's welcome! Students, beginners, pros… if you've got the passion, you've got a spot here.",
+        "Whether you're a coding ninja, a design wizard, or just someone with crazy ideas—everyone's welcome!",
     },
     {
       question: "What is the procedure for participation?",
       answer:
-        "Participants must first choose one of the 5 problem statements listed on website. After selecting, they can submit a project proposal and a short presentation video explaining their idea. These attachments are optional, but adding them significantly increases the chances of getting shortlisted. Once submitted, selected teams will move forward to the final hackathon round and build their solution.",
+        "Choose one of the 5 problem statements, optionally upload a proposal or video, then wait for shortlisting.",
     },
     {
       question: "Will the problem statements change during the hackathon?",
       answer:
-        "Yes. The initial 5 problem statements are only for shortlisting teams. Once the hackathon begins, new problem statements will be revealed on the spot. Participants will then build their final project based on these newly released statements.",
+        "Yes. New statements will be revealed on the spot during the hackathon.",
     },
     {
       question: "Is there any registration fee?",
-      answer:
-        "No, participation in HACKSECURE'26 is completely free! 🎉 Just register and get ready to innovate!",
+      answer: "No, participation in HACKSECURE'26 is completely free!",
     },
     {
-      question: "What about the accommodation for outside students?",
+      question: "What about accommodation?",
       answer:
-        "On-campus accommodation will be provided for outstation participants! 🛏️🍽️ Details regarding lodging and meals will be shared after shortlisting.",
+        "On-campus accommodation will be provided for outstation students!",
     },
     {
-      question: "Can I work on the old shortlisting problem statements during the hackathon?",
+      question: "Can I use old problem statements?",
       answer:
-        "No. The old problem statements are only for selection. The hackathon project must follow the newly revealed problem statements.",
+        "No. Final hackathon problems will be newly given; old ones are only for shortlisting.",
     },
   ];
 
@@ -104,7 +124,7 @@ const Contact = () => {
         </p>
       </div>
 
-      {/* Contact Info Cards */}
+      {/* Contact Info */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         {contactInfo.map((info, index) => (
           <div
@@ -124,7 +144,7 @@ const Contact = () => {
         ))}
       </div>
 
-      {/* Main Content and Sidebar */}
+      {/* Form + Sidebar */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
         {/* Contact Form */}
         <div className="lg:col-span-2">
@@ -136,13 +156,12 @@ const Contact = () => {
             {submitted && (
               <div className="mb-6 p-4 bg-green-100 border-2 border-green-500 rounded-lg text-green-700">
                 <p className="font-semibold">
-                  Thank you! Your message has been sent successfully.
+                  Thank you! Your message has been sent.
                 </p>
-                <p className="text-sm">We'll get back to you soon.</p>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={sendEmail} className="space-y-5">
               <div>
                 <label className="block text-sm font-semibold text-[#5A2A25] mb-2">
                   Your Name *
@@ -150,10 +169,11 @@ const Contact = () => {
                 <input
                   type="text"
                   name="name"
+                  disabled={loading}
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg focus:outline-none focus:border-[#E8A87C] focus:ring-2 focus:ring-[#E8A87C]/20 text-[#33110E] placeholder:text-[#999]"
+                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -165,10 +185,11 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
+                  disabled={loading}
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg focus:outline-none focus:border-[#E8A87C] focus:ring-2 focus:ring-[#E8A87C]/20 text-[#33110E] placeholder:text-[#999]"
+                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg"
                   placeholder="Enter your email address"
                 />
               </div>
@@ -180,10 +201,11 @@ const Contact = () => {
                 <input
                   type="text"
                   name="subject"
+                  disabled={loading}
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg focus:outline-none focus:border-[#E8A87C] focus:ring-2 focus:ring-[#E8A87C]/20 text-[#33110E] placeholder:text-[#999]"
+                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg"
                   placeholder="What is this about?"
                 />
               </div>
@@ -194,26 +216,59 @@ const Contact = () => {
                 </label>
                 <textarea
                   name="message"
+                  disabled={loading}
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg focus:outline-none focus:border-[#E8A87C] focus:ring-2 focus:ring-[#E8A87C]/20 text-[#33110E] placeholder:text-[#999] resize-none"
+                  className="w-full px-4 py-3 border-2 border-[#E8A87C]/50 rounded-lg resize-none"
                   placeholder="Tell us more about your inquiry..."
                 ></textarea>
               </div>
 
+              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-[#5A2A25] hover:bg-[#4A1C18] text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 border-2 border-[#E8A87C]"
+                disabled={loading}
+                className={`w-full font-semibold py-3 px-6 rounded-lg border-2 border-[#E8A87C] text-white transition-colors duration-300 ${
+                  loading
+                    ? "bg-[#7a4c46] cursor-not-allowed"
+                    : "bg-[#5A2A25] hover:bg-[#4A1C18]"
+                }`}
               >
-                Send Message
+                {loading ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4l3.5-3.5L12 0v4a8 8 0 100 16v-4l-3.5 3.5L12 24v-4a8 8 0 01-8-8z"
+                      ></path>
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </form>
           </div>
         </div>
 
-        {/* Sidebar Info */}
+        {/* Sidebar */}
         <div className="lg:col-span-1">
           <div className="bg-[#3E1714] text-white p-6 sm:p-8 rounded-lg shadow-lg border-2 border-[#E8A87C]">
             <h3 className="text-[#E8A87C] text-lg font-semibold mb-4">
@@ -222,34 +277,31 @@ const Contact = () => {
 
             <div className="space-y-6">
               <div>
-                <p className="text-[#F2D5C4] font-semibold text-sm mb-2">
+                <p className="text-[#F2D5C4] text-sm mb-2 font-semibold">
                   Primary Email
                 </p>
                 <a
-                  href="mailto:csec@nith.ac.in"
-                  className="text-[#E3AFA0] hover:text-[#E8A87C] transition-colors break-all"
+                  href="mailto:hack.csec.nith25@gmail.com"
+                  className="text-[#E3AFA0] underline"
                 >
-                  csec@nith.ac.in
+                  hack.csec.nith25@gmail.com
                 </a>
               </div>
 
               <div>
-                <p className="text-[#F2D5C4] font-semibold text-sm mb-2">
+                <p className="text-[#F2D5C4] text-sm mb-2 font-semibold">
                   Alternative Email
                 </p>
-                <a
-                  href="mailto:csec@nith.ac.in"
-                  className="text-[#E3AFA0] hover:text-[#E8A87C] transition-colors break-all"
-                >
+                <a href="mailto:csec@nith.ac.in" className="text-[#E3AFA0]">
                   csec@nith.ac.in
                 </a>
               </div>
 
               <div>
-                <p className="text-[#F2D5C4] font-semibold text-sm mb-2">
+                <p className="text-[#F2D5C4] text-sm mb-2 font-semibold">
                   Address
                 </p>
-                <p className="text-[#E3AFA0] text-sm leading-relaxed">
+                <p className="text-[#E3AFA0] text-sm">
                   NIT Hamirpur
                   <br />
                   Hamirpur, HP 177005
@@ -259,7 +311,7 @@ const Contact = () => {
               </div>
 
               <div className="border-t border-[#E8A87C]/30 pt-6">
-                <p className="text-[#F2D5C4] font-semibold text-sm mb-2">
+                <p className="text-[#F2D5C4] text-sm mb-2 font-semibold">
                   Event Details
                 </p>
                 <p className="text-[#E3AFA0] text-sm">
@@ -273,7 +325,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* FAQs Section */}
+      {/* FAQ Section */}
       <div className="bg-[#F5D7C8]/10 rounded-lg border-2 border-[#E8A87C]/20 p-8">
         <h2 className="text-2xl sm:text-3xl font-bold text-[#5A2A25] mb-8">
           Frequently Asked Questions
@@ -289,31 +341,31 @@ const Contact = () => {
                 onClick={() =>
                   setExpandedFaq(expandedFaq === index ? null : index)
                 }
-                className="w-full px-6 py-4 bg-white hover:bg-[#F5D7C8]/20 text-left flex items-center justify-between transition-colors"
+                className="w-full px-6 py-4 bg-white hover:bg-[#F5D7C8]/20 flex justify-between items-center"
               >
                 <h3 className="font-semibold text-[#5A2A25]">{faq.question}</h3>
                 <span
-                  className={`text-[#E8A87C] text-xl transition-transform ${expandedFaq === index ? "rotate-180" : ""}`}
+                  className={`text-[#E8A87C] text-xl transition-transform ${
+                    expandedFaq === index ? "rotate-180" : ""
+                  }`}
                 >
                   ▼
                 </span>
               </button>
 
               {expandedFaq === index && (
-                <div className="px-6 py-4 bg-[#F5D7C8]/20 border-t-2 border-[#E8A87C]/30">
-                  <p className="text-[#33110E] leading-relaxed">{faq.answer}</p>
-                </div>
+                <div className="px-6 py-4 bg-[#F5D7C8]/20">{faq.answer}</div>
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-8 p-6 bg-[#F5D7C8]/20 rounded-lg border-2 border-[#E8A87C]/30 text-center">
+        <div className="mt-8 p-6 bg-[#F5D7C8]/20 border-2 border-[#E8A87C]/30 rounded-lg text-center">
           <p className="text-[#33110E] font-semibold">
-            Got more questions? Reach out to{" "}
+            Got more questions? Reach out at{" "}
             <a
               href="mailto:hack.csec.nith25@gmail.com"
-              className="text-[#5A2A25] hover:text-[#E8A87C] underline transition-colors"
+              className="text-[#5A2A25] underline"
             >
               hack.csec.nith25@gmail.com
             </a>
