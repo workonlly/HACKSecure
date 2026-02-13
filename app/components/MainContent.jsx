@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 
 const objectives = [
   "Enhance Awareness: Educate participants on mobile device security threats and best practices.",
@@ -47,17 +46,6 @@ const timeline = [
 ];
 
 export default function Home() {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://apply.devfolio.co/v2/sdk.js";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
       <div className="w-full">
