@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hacksecure.in"),
-  title: "HackSecure'26",
+  title: "HACKSECURE'26",
   description:
     "HackSecure '26 is the flagship cybersecurity hackathon organized by CSEC, NIT Hamirpur. Bringing together innovators, ethical hackers, and developers from across North India to solve real-world security challenges.",
   keywords: [

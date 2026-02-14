@@ -283,7 +283,7 @@ function Prizes() {
               <div className="space-y-3 sm:space-y-4">
                 {[
                   { label: "Hackathon Launch", date: "Jan 31, 2026" },
-                  { label: "Registration Deadline", date: "Feb 15, 2026" },
+                  { label: "Registration Deadline", date: "Feb 22, 2026" },
                   { label: "Grand Finale", date: "March 10-11, 2026" },
                 ].map((item, idx) => (
                   <div
