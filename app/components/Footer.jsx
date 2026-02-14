@@ -219,12 +219,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2 md:space-y-3">
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   className="text-[#E3AFA0] text-xs md:text-sm hover:text-[#E8A87C] transition-colors"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
                 <Link

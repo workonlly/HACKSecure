@@ -55,7 +55,7 @@ const Contact = () => {
     {
       icon: "📧",
       title: "Email",
-      details: ["hack.csec.nith25@gmail.com"],
+      details: ["hackathon_cse@nith.ac.in"],
     },
     {
       icon: "📍",
@@ -281,10 +281,10 @@ const Contact = () => {
                   Primary Email
                 </p>
                 <a
-                  href="mailto:hack.csec.nith25@gmail.com"
+                  href="mailto:hackathon_cse@nith.ac.in"
                   className="text-[#E3AFA0] underline"
                 >
-                  hack.csec.nith25@gmail.com
+                  hackathon_cse@nith.ac.in
                 </a>
               </div>
 
@@ -364,10 +364,10 @@ const Contact = () => {
           <p className="text-[#33110E] font-semibold">
             Got more questions? Reach out at{" "}
             <a
-              href="mailto:hack.csec.nith25@gmail.com"
+              href="mailto:hackathon_cse@nith.ac.in"
               className="text-[#5A2A25] underline"
             >
-              hack.csec.nith25@gmail.com
+              hackathon_cse@nith.ac.in
             </a>
           </p>
         </div>
