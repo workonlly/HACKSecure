@@ -18,98 +18,127 @@ const hackedFontClass = "font-mono font-bold tracking-widest";
 // ... (Keep your teamMembers array exactly as it is) ...
 const teamMembers = [
   // First Years
-  
+  {
+  name: "Ujjawal Maheshwari",
+  batch: "2027",
+  imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1771065611/WhatsApp_Image_2026-02-14_at_16.09.13_dw5ixn.jpg",
+ position: "Lead Organizer"
+},
 {
     name: "Abhay Chaudhary",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1738081032/IMG-20240920-WA0002_kxrj0r.jpg",
+    position: "Treasurer"
   },
   {
     name: "Akshit Dogra",
     batch: "2027",
-    imgSrc: "https://drive.google.com/file/d/1K5XrI2tVE_-Zc1wk9g_fv4JF0_W7BP8l/view?usp=drivesdk",
+    imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052148/IMG-20241013-WA0067_j4kpmh.jpg",
+  position: "Accommodation"
   },
   {
     name: "Anshuman Kapoor",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1728535411/anshuman_ugy7ne.jpg",
+  position: "Media And Promotions"
   },
   {
     name: "Avirat Mahajan",
     batch: "2027",
-    imgSrc: "https://drive.google.com/file/d/1321n0BBqhXknkhfsmFACmQ--skSFg1Hj/view?usp=drivesdk",
+    imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052152/Avirat_Mahajan_efnln9.jpg",
+  position: "Treasurer"
   },
   {
     name: "Ayush Sharma",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dnbf0uwku/image/upload/v1726945095/IMG-20240513-WA0233_jgmvog.jpg",
+  position: "Public Relations"
   },
   {
     name: "Chhavi Thakur",
     batch: "2027",
-    imgSrc: "https://drive.google.com/file/d/1XkFHvOoGTY8u5g-ovSs8Kueo4ZY8nSTd/view?usp=drivesdk",
+    imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052167/motion_photo_2593710526921371319_frncd7.jpg",
+  position: "Accommodation"
   },
   {
     name: "Harsh Goel",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1731838897/WhatsApp_Image_2024-11-17_at_15.51.00_2b583045_kqcd5x.jpg",
+  position: "Accommodation"
   },
   {
     name: "Himanshu Mahajan",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dnbf0uwku/image/upload/v1726945205/formal_oi5vpb.jpg",
+  position: "Discipline"
   },
   {
     name: "Isha",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1738080640/IMG_5198_xz4pzl.jpg",
+  position: "Public Relations"
   },
   {
     name: "Lakshay Lalia",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1738080749/IMG_20241101_171749_392_auyw2u.jpg",
+  position: "Student Coordinator"
   },
   {
     name: "Navdeep Singh",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dtrv7xbm5/image/upload/v1768491452/navdeep_ktens5.jpg",
+  position: "Student Coordinator"
   },
   {
     name: "Piyush Mishra",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1738138149/IMG-20250112-WA0084_akkh6m.jpg",
+  position: "Internal Affairs"
   },
   {
     name: "pratyush pragyey",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1721114549/rptdgsgi7qzijyojnja0.jpg",
+  position: "Lead"
   },
   {
     name: "Prince Khandelwal",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dnbf0uwku/image/upload/v1726945058/IMG-20240920-WA0013_l6p9tg.jpg",
+  position: "Internal Affairs"
   },
   {
     name: "Rudesh Kumar",
     batch: "2027",
-    imgSrc: "https://drive.google.com/file/d/1NFYZL9PC_rXbI0bVFmAC80nZC_X0_SG2/view?usp=sharing",
+    imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052324/photo_fn8k7w.jpg",
+  position: "Web Lead"
   },
   {
     name: "Saksham Chhabra",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dnbf0uwku/image/upload/v1741525859/IMG-20240323-WA0015_dcsbh7_exdrze.jpg",
+  position: "Web Lead"
   },
   {
     name: "Sujal Choudhary",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dkcrhkz4m/image/upload/v1738091293/sujal_sosrec_ghouip.jpg",
+  position: "Lead Organizer"
   },
   {
     name: "Vansh Pal",
     batch: "2027",
-    imgSrc: "https://drive.google.com/file/d/1gqDQ6KpM-6JUXeJ3DhV2J7XHTZmh5pGs/view?usp=sharing",
+    imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052161/Vansh_Photo_eiu3b1.jpg",
+  position: "Technical Head"
   },
 
+  {
+    name:"Pradyumna Sharma",
+    batch:"2027",
+    imgSrc:"https://res.cloudinary.com/dqftjf73g/image/upload/v1770053355/WhatsApp_Image_2026-02-02_at_22.01.53_rwdoaz.jpg",
+  position: "Lead"
+  },
   {
     name: "Abhishika",
     batch: "2028",
@@ -359,7 +388,7 @@ export default function Team() {
 
         <div className="text-center mb-16 relative z-10">
           <h2 className={`text-4xl md:text-6xl mb-4 text-[#5A2A25] ${hackedFontClass} tracking-wide`}>
-            Team <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5A2A25] to-[#8B4A42] drop-shadow-md">CSEC</span>
+            Team <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5A2A25] to-[#8B4A42] drop-shadow-md">Hacksecure</span>
           </h2>
           <p className="text-[#5A2A25]/70 max-w-2xl mx-auto text-lg font-light">
             Meet the talented individuals who make up our diverse team.
@@ -412,11 +441,16 @@ export default function Team() {
                   <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-md">
                     {member.name}
                   </h3>
-                  
+                  {member.position && (
+                    <span className="text-md italic p-2 font-bold text-white m-1 drop-shadow-md backdrop-blur-sm">
+                       {member.position}
+                    </span>
+                    )}
                   <div className="flex flex-wrap gap-2">
                     <span className="inline-block px-3 py-1 bg-[#5A2A25]/30 border border-[#5A2A25]/50 text-white rounded-lg text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
                       {member.batch}
                     </span>
+                    
                     <span className="inline-block px-3 py-1 bg-[#8B4A42]/30 border border-[#8B4A42]/50 text-white rounded-lg text-xs font-semibold uppercase tracking-wider backdrop-blur-sm">
                       {getRole(member.batch)}
                     </span>
