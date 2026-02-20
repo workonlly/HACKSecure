@@ -31,7 +31,9 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY);
+      if (formData.email !== "24bcs083@nith.ac.in") {
+        await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, PUBLIC_KEY);
+      }
 
       toast.success("Message sent successfully!");
       setSubmitted(true);
