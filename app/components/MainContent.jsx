@@ -247,10 +247,9 @@ export default function Home() {
                           <li>
                             Include proper{" "}
                             <strong>
-                              documentation, code repository link, and a demo
-                              video
-                            </strong>{" "}
-                            (if required).
+                              documentation, and a demo
+                              video clearly explain how you solved the chosen problem statement.
+                            </strong>
                           </li>
                           <li>
                             Judges&apos; decisions are{" "}
