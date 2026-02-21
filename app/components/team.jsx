@@ -97,12 +97,6 @@ const teamMembers = [
   position: "Internal Affairs"
   },
   {
-    name: "pratyush pragyey",
-    batch: "2027",
-    imgSrc: "https://res.cloudinary.com/dvnrlqqpq/image/upload/v1721114549/rptdgsgi7qzijyojnja0.jpg",
-  position: "Lead"
-  },
-  {
     name: "Prince Khandelwal",
     batch: "2027",
     imgSrc: "https://res.cloudinary.com/dnbf0uwku/image/upload/v1726945058/IMG-20240920-WA0013_l6p9tg.jpg",
@@ -137,7 +131,7 @@ const teamMembers = [
     name:"Pradyumna Sharma",
     batch:"2027",
     imgSrc:"https://res.cloudinary.com/dqftjf73g/image/upload/v1770053355/WhatsApp_Image_2026-02-02_at_22.01.53_rwdoaz.jpg",
-  position: "Lead"
+  position: "Lead Organizer"
   },
   {
     name: "Abhishika",
