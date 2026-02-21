@@ -233,6 +233,13 @@ const teamMembers = [
     batch: "2028",
     imgSrc: "https://res.cloudinary.com/dqftjf73g/image/upload/v1770052951/image_utkarsh_dh2ard.png",
   },
+  
+  {
+    name: "Hridanshu",
+    batch: "2028",
+    imgSrc: "https://res.cloudinary.com/dfgnzhgko/image/upload/v1771672514/WhatsApp_Image_2026-02-21_at_4.44.29_PM_fo8odm.jpg",
+  },
+
   {
     name: "Akarsh",
     batch: "2029",

@@ -36,9 +36,9 @@ const timeline = [
   { event: "Registration Window Opens", date: "31st January 2026" },
   {
     event: "Last Date for Registration & Idea Submission",
-    date: "22nd February 2026",
+    date: "3rd March 2026",
   },
-  { event: "Evaluation Round", date: "22nd February 2026" },
+  { event: "Evaluation Round", date: "4th March 2026" },
   { event: "Announcement of Shortlisted Teams", date: "5th March 2026" },
   { event: "Hackathon Starts", date: "10th March 2026" },
   { event: "Project Submission Deadline", date: "11th March 2026" },
